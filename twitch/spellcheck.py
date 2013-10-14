@@ -2,8 +2,6 @@
 Interactive spellcheck program for twitch.tv spellcheck challenge
 """
 
-import sys
-
 "Insert the word inside the tree-dictionnary as a leaf with a key set as None"
 def insert(dic, word):
 	d = dic
