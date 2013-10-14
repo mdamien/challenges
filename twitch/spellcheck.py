@@ -24,17 +24,18 @@ goal is the su-string to match to a word in dic"""
 def correct(dic,goal,prev=None):
 	if len(goal) == 0 and None in dic: #return if an exact match is found
 			return dic[None]
-	if len(goal) > 0 and goal[0] in dic: #try to find an exact match
-		r = correct(dic[goal[0]], goal[1:],goal[0])
-		if r: return r
-	if len(goal) > 0 and goal[0] in "aeiouy": #try all vowels
-		for v in "aeiouy":
-			if v != goal[0] and v in dic:
-				r = correct(dic[v], goal[1:],goal[0])
-				if r: return r
-	if len(goal) > 0 and prev and goal[0] == prev: #ignore repeated letters
-		r = correct(dic, goal[1:],goal[0])
-		if r: return r
+	elif len(goal) > 0:
+		if goal[0] in dic: #try to find an exact match
+			r = correct(dic[goal[0]], goal[1:],goal[0])
+			if r: return r
+		if goal[0] in "aeiouy": #try all vowels
+			for v in "aeiouy":
+				if v != goal[0] and v in dic:
+					r = correct(dic[v], goal[1:],goal[0])
+					if r: return r
+		if prev and goal[0] == prev: #ignore repeated letters
+			r = correct(dic, goal[1:],goal[0])
+			if r: return r
 
 if __name__ == "__main__":
 	dic = build_dic()
