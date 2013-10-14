@@ -18,6 +18,6 @@ def mess_it_up(word):
 			word[i] = l.swapcase()
 	return "".join(word)
 
-words = "sheep people inside job wake conspiracy".split()
+words = [word.strip() for word in open('/usr/share/dict/words','r')]
 for i in xrange(20):
 	print mess_it_up(random.choice(words))
