@@ -1,6 +1,10 @@
+"""
+Interactive spellcheck program for twitch.tv spellcheck challenge
+"""
+
 def get_words():
 	return "sheep people inside job wake conspiracy".split()
- 
+
 "Insert the word inside the tree-dictionnary as a leaf with a key set as None"
 def insert(dico, word):
 	d = dico
@@ -9,14 +13,14 @@ def insert(dico, word):
 			d[letter] = {}
 		d = d[letter]
 	d[None] = word
- 
+
 "Build the dictionnary as a K-tree of dict. The childs are the possible next letter"
 def build_dict(words):
 	dico = {}
 	for word in words:
 		insert(dico,word)
 	return dico
- 
+
 """Return the corrected word or None if no word matched
 dico is the sub-tree containing the possibilities of next letter
 goal is the su-string to match to a word in dico"""
@@ -35,7 +39,7 @@ def correct(dico,goal,prev=None):
         if prev and goal[0] == prev: #ignore repeated letters
             r = correct(dico, goal[1:],goal[0])
             if r: return r
- 
+
 if __name__ == "__main__":
 	dico = build_dict(get_words())
 	try:
