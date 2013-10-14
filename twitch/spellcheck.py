@@ -1,5 +1,5 @@
 """
-Interactive spellcheck program for twitch.tv spellcheck challenge
+Interactive spellchecker for twitch.tv spellcheck challenge
 """
 
 "Insert the word inside the tree-dictionnary as a leaf with a key set as None"
